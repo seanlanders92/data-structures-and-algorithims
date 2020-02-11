@@ -93,7 +93,12 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-    // Solution code here...
+    arr.forEach((element, index, array) => {
+        if(element % 3 === 2){
+            array.pop()
+        }
+    })
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -166,14 +171,14 @@ xdescribe('Testing challenge 3', () => {
     });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
     test('It should remove three elements from the array', () => {
         expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
         expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
     });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
     test('It should remove three elements from the array', () => {
         expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
         expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
