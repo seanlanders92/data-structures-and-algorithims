@@ -117,9 +117,15 @@ The inventory is formatted like this:
 
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
-
 const createList = (availableItems) => {
-    // Solution code here...
+    let newList =[];
+    availableItems.forEach(element => {
+        if(element.available === true){
+            newList.push(element.name);
+        }
+    })
+    console.log(newList);
+    return newList;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,7 +184,7 @@ xdescribe('Testing challenge 4', () => {
     });
 });
 
-describe('Testing challenge 5', () => {
+xdescribe('Testing challenge 5', () => {
     test('It should remove three elements from the array', () => {
         expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
         expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
@@ -194,7 +200,7 @@ xdescribe('Testing challenge 6', () => {
     });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
     const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
     test('It should print out messages or numbers', () => {
