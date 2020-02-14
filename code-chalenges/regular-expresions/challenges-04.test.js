@@ -13,7 +13,7 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  return /\d+/.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,7 +25,8 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+    let arr = str.match(/[A-Z]\w*/g)
+  return (arr ? arr : []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,9 +34,15 @@ CHALLENGE 3
 
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
-
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+    const newArray = []
+    arr.forEach(element => {
+         
+         if(element.match(/^[A-J]\w*/g)){
+             newArray.push(element);
+         }
+    });
+    return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +58,7 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+    return /^[Oo]ct(ober)?$/g.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,7 +132,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
@@ -138,7 +145,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {
@@ -154,7 +161,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
