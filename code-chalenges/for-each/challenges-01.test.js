@@ -125,7 +125,6 @@ const createList = (availableItems) => {
             newList.push(element.name);
         }
     })
-    console.log(newList);
     return newList;
 };
 
